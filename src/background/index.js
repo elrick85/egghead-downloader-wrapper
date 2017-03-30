@@ -28,17 +28,17 @@ module.exports = {
     },
 
     // wrapper.download("https://egghead.io/courses/learn-es6-ecmascript-2015", "Learn ES6 (ECMAScript 2015)");
-    download: function(link, title, cb) {
+    download: function(link, title, stepCb, cb) {
         var outputDir = createOutput(title);
 
         var process = runCommand(["-c", "-f", link, outputDir], function(error, stdout, stderr) {
             //console.log("stderr", stderr);
-            cb(error);
+            cb(error, outputDir);
         });
 
         process.stdout.on("data", function(chunk) {
             //console.log("stdout/data", chunk);
-            cb(null, chunk
+          stepCb(null, chunk
               .replace(/\[32m/, "[OK]")
               .replace(/\[31m/, "[ERR]")
               .replace(/\[39m/g, "\n"));

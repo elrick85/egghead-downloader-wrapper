@@ -11,8 +11,14 @@ var service = require("./src/background/index");
 require("./dist/index");
 
 global.appEmitter.addListener("runDownloader", function(data) {
-  if(!data.link || !data.title){
-    global.appEmitter.emit("submit.error", new Error(`Field ${!data.link ? "link" : "title"} is empty`));
+  if(!data.link || !data.title || !data.type){
+    if(!data.link){
+      global.appEmitter.emit("submit.error", new Error(`Field "Link to playlist" is empty`));
+    } else if(!data.title){
+      global.appEmitter.emit("submit.error", new Error(`Field "Title" is empty`));
+    } else if(!data.type){
+      global.appEmitter.emit("submit.error", new Error(`Field "Send to" is empty`));
+    }
 
     return;
   }
@@ -21,10 +27,14 @@ global.appEmitter.addListener("runDownloader", function(data) {
 
   service.download(data.link, data.title, function(error, chunk) {
     global.appEmitter.emit("download.data.chunk", chunk);
-
+  }, function(error, dir) {
     if(error){
       global.appEmitter.emit("download.error", error);
       return;
+    } else {
+      console.log(dir);
     }
+
+    //TODO: Send to fileserver
   });
 });

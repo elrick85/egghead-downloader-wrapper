@@ -62,7 +62,8 @@ export class CustomForm extends React.Component<any, IFormState> {
 
         this.emitter.emit("runDownloader", {
             link: this.state.link,
-            title: this.state.title
+            title: this.state.title,
+            type: this.state.type
         })
     }
 
