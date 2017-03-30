@@ -38,7 +38,10 @@ module.exports = {
 
         process.stdout.on("data", function(chunk) {
             //console.log("stdout/data", chunk);
-            cb(null, chunk);
+            cb(null, chunk
+              .replace(/\[32m/, "[OK]")
+              .replace(/\[31m/, "[ERR]")
+              .replace(/\[39m/g, "\n"));
         })
     }
 };
