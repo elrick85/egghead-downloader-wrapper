@@ -17,6 +17,20 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "~1.6.2"
+    "@types/fbemitter": "^2.0.32",
+    "@types/node": "^7.0.12",
+    "electron": "~1.6.2",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.6",
+    "typescript": "^2.2.2"
+  },
+  "dependencies": {
+    "@types/react": "^15.0.16",
+    "@types/react-dom": "^0.14.23",
+    "bootstrap": "^3.3.7",
+    "egghead-downloader": "^0.1.9",
+    "fbemitter": "^2.1.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }

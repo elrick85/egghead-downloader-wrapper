@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es6",
+    "jsx": "react"
+  },
+  "include": [
+    "./src/**/*",
+    "node_modules/awesome-typescript-loader/lib/runtime.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
